@@ -2,3 +2,4 @@
 *.DS_Store*
 *postgres-data*
 **/downloads/**
+**/__pycache__/**
