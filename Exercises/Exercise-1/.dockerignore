@@ -1,0 +1,12 @@
+# Ignore downloads, test caches, virtual environments
+downloads/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.env
+.venv/
+venv/
+.env/
+.git/
+pytest_cache/

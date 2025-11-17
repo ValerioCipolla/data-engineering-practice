@@ -1,11 +1,8 @@
-import pytest
-from pathlib import Path
 from unittest.mock import patch, MagicMock
-from io import BytesIO
 from zipfile import ZipFile
-import app.main as downloader
+import main as downloader
 
-@patch("app.main.requests.get")
+@patch("main.requests.get")
 def test_download_file_success(mock_get, tmp_path, monkeypatch):
     # Mock the requests.get response
     mock_response = MagicMock()
@@ -25,7 +22,7 @@ def test_download_file_success(mock_get, tmp_path, monkeypatch):
     assert zip_path  == expected_file_path
     assert zip_path.read_bytes() == b"abc123"
 
-@patch("app.main.requests.get")
+@patch("main.requests.get")
 def test_download_file_failure(mock_get, tmp_path, monkeypatch):
     # Mock the requests.get response
     mock_response = MagicMock()
@@ -70,7 +67,7 @@ def test_extract_and_delete_zip_file(tmp_path, monkeypatch):
     # Zip should have been deleted
     assert not zip_path.exists()
 
-@patch("app.main.requests.get")
+@patch("main.requests.get")
 def test_full_downloader(mock_get, tmp_path, monkeypatch):
     # ---- Create a real ZIP in tmp_path for the success case ----
     csv_name = "good.csv"
